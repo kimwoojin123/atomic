@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, ReactNode } from 'react';
 
-interface DivProps extends HTMLAttributes<HTMLDivElement> {
+export interface DivProps extends HTMLAttributes<HTMLDivElement> {
   children?: ReactNode;
   width?: string;
   height?: string;
