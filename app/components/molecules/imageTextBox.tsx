@@ -2,6 +2,7 @@ import React from 'react';
 import Image from 'next/image'
 import TextBox, {TextBoxProps} from './textBox';
 import Div, {DivProps} from '../atoms/div';
+import styled from 'styled-components'
 
 export interface ImageTextBoxProps {
   imageUrl: string;
@@ -12,13 +13,21 @@ export interface ImageTextBoxProps {
   imgHeight : number;
 }
 
+const StyledDiv = styled.div`
+  display:flex;
+  flex-direction:column; 
+  justify-content:center;
+  align-items:center;
+  height:600px;
+`;
+
 const ImageTextBox: React.FC<ImageTextBoxProps> = ({ imageUrl, altText, imgWidth, imgHeight, textBoxProps, divProps }) => {
   return (
     <Div {...divProps}>
-      <Div {...divProps} style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+      <StyledDiv>
         <Image src={imageUrl} alt={altText} width={imgWidth} height={imgHeight} />
         <TextBox {...textBoxProps} />
-      </Div>
+      </StyledDiv>
     </Div>
   );
 };
