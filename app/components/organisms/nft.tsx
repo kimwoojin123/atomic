@@ -7,7 +7,7 @@ interface ContentsProps {
   textBoxProps?: TextBoxProps
 }
 
-const Introduce: React.FC<ContentsProps> = ({
+const Nft: React.FC<ContentsProps> = ({
   sectionProps,
   textBoxProps
 }) => {
@@ -17,11 +17,11 @@ const Introduce: React.FC<ContentsProps> = ({
   };
 
   const defaultHeadingStyle = {
-    fontSize: '44px',
+    fontSize: '34px',
     color: 'transparent',
-    fontWeight: 'bold',
+    textShadow: '0 0 0 white',
     lineHeight : '100px',
-    textShadow : '0 0 0 white'
+    fontWeight:'bold'
   };
 
   const defaultParagraphStyle = {
@@ -30,16 +30,14 @@ const Introduce: React.FC<ContentsProps> = ({
   };
 
   const pPropsArray = [
-    { children: "생명의 생성과 소멸이 반복하는 과정 속에서", style: defaultParagraphStyle },
-    { children: "소행성의 주인이 되어 PER PROJECT 차원의", style: defaultParagraphStyle },
-    { children: "생태계 재건에 참여하고, 보상을 획득해보세요.", style: defaultParagraphStyle }
+    { children: "PER PROJECT에서 발행하는 NFT를 획득하고, 생태계에 참여해보세요.", style: defaultParagraphStyle },
   ];
 
   const customTextBoxProps: TextBoxProps & { pCount?: number } = {
     divProps: { style: defaultDivStyle },
     hProps: { 
       level: 2,
-      children : "PER PROJECT", 
+      children : "NFT", 
       style: defaultHeadingStyle },
     pPropsArray: pPropsArray
   };
@@ -51,4 +49,4 @@ const Introduce: React.FC<ContentsProps> = ({
   );
 };
 
-export default Introduce;
+export default Nft;

@@ -7,7 +7,7 @@ interface ContentsProps {
   textBoxProps?: TextBoxProps
 }
 
-const Introduce: React.FC<ContentsProps> = ({
+const Vision: React.FC<ContentsProps> = ({
   sectionProps,
   textBoxProps
 }) => {
@@ -17,11 +17,11 @@ const Introduce: React.FC<ContentsProps> = ({
   };
 
   const defaultHeadingStyle = {
-    fontSize: '44px',
+    fontSize: '34px',
     color: 'transparent',
-    fontWeight: 'bold',
+    textShadow: '0 0 0 white',
     lineHeight : '100px',
-    textShadow : '0 0 0 white'
+    fontWeight:'bold',
   };
 
   const defaultParagraphStyle = {
@@ -30,16 +30,17 @@ const Introduce: React.FC<ContentsProps> = ({
   };
 
   const pPropsArray = [
-    { children: "생명의 생성과 소멸이 반복하는 과정 속에서", style: defaultParagraphStyle },
-    { children: "소행성의 주인이 되어 PER PROJECT 차원의", style: defaultParagraphStyle },
-    { children: "생태계 재건에 참여하고, 보상을 획득해보세요.", style: defaultParagraphStyle }
+    { children: "PERPROJECT는 블록체인을 기반으로 한", style: defaultParagraphStyle },
+    { children: "인플루언서 마케팅 플랫폼 CHANNEL-iN을 중심으로,", style: defaultParagraphStyle },
+    { children: "탈중앙화 서비스의 실현을 통해", style: defaultParagraphStyle },
+    { children : "이용자들이 자율적인 커뮤니티를 형성하는 것을 목표로 합니다.", style: defaultParagraphStyle },
   ];
 
   const customTextBoxProps: TextBoxProps & { pCount?: number } = {
     divProps: { style: defaultDivStyle },
     hProps: { 
       level: 2,
-      children : "PER PROJECT", 
+      children : "Vision", 
       style: defaultHeadingStyle },
     pPropsArray: pPropsArray
   };
@@ -51,4 +52,4 @@ const Introduce: React.FC<ContentsProps> = ({
   );
 };
 
-export default Introduce;
+export default Vision;
