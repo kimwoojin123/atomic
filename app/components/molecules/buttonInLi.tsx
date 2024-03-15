@@ -5,7 +5,26 @@ import ImageTextBox from '../molecules/imageTextBox';
 import Button from '../atoms/button';
 import { TextBoxProps } from './textBox';
 import UnorderedList, { UnorderedListProps } from '../atoms/ul';
-import Div from '../atoms/div';
+import styled from 'styled-components';
+
+
+const Li = styled.li<{ isActive: boolean }>`
+    background-color: ${(props: { isActive: boolean }) => (props.isActive ? 'lightgray' : 'white')};
+    width: 450px;
+    height: 600px;
+    `;
+
+const StyledDiv = styled.div`
+  width: 400px;
+  height: 50px;
+  position: relative;
+  bottom: 300px;
+  left: 225px;
+  transform: translate(-50%, -50%);
+  background-color: white;
+  padding: 10px;
+`;
+
 
 interface Item {
   imageUrl: string;
@@ -26,17 +45,12 @@ const ButtonInLi: React.FC<ButtonInLiProps> = ({ items, unorderedListProps }) =>
   return (
     <UnorderedList {...unorderedListProps}>
       {items.map((item, index) => (
-        <li
+        <Li
           key={index}
+          isActive={activeIndex === index}
           onMouseOver={() => setActiveIndex(index)}
           onMouseOut={() => setActiveIndex(null)}
-          style={{
-            backgroundColor: activeIndex === index ? 'lightgray' : 'white',
-            width: '450px',
-            height: '600px',
-          }}
         >
-          
           <ImageTextBox
             imageUrl={item.imageUrl}
             altText={item.altText}
@@ -45,22 +59,11 @@ const ButtonInLi: React.FC<ButtonInLiProps> = ({ items, unorderedListProps }) =>
             textBoxProps={item.textBoxProps}
           />
           {activeIndex === index && (
-            <Div
-              width='400px'
-              height='50px'
-              style={{
-                position: 'relative',
-                bottom:'300px',
-                left:'225px',
-                transform: 'translate(-50%, -50%)',
-                backgroundColor: 'white',
-                padding: '10px',
-              }}
-            >
-              <Button>Show Details</Button>
-            </Div>
+          <StyledDiv>
+            <Button>Show Details</Button>
+          </StyledDiv>
           )}
-        </li>
+        </Li>
       ))}
     </UnorderedList>
   );
