@@ -3,20 +3,20 @@ import Image from 'next/image'
 import TextBox, {TextBoxProps} from './textBox';
 import Div, {DivProps} from '../atoms/div';
 
-interface ImageTextBoxProps {
+export interface ImageTextBoxProps {
   imageUrl: string;
   altText: string;
   textBoxProps: TextBoxProps;
   divProps?:DivProps
-  width: number;
-  height : number;
+  imgWidth: number;
+  imgHeight : number;
 }
 
-const ImageTextBox: React.FC<ImageTextBoxProps> = ({ imageUrl, altText, width, height, textBoxProps, divProps }) => {
+const ImageTextBox: React.FC<ImageTextBoxProps> = ({ imageUrl, altText, imgWidth, imgHeight, textBoxProps, divProps }) => {
   return (
     <Div {...divProps}>
       <Div {...divProps}>
-        <Image src={imageUrl} alt={altText} width={width} height={height} />
+        <Image src={imageUrl} alt={altText} width={imgWidth} height={imgHeight} />
       </Div>
       <Div {...divProps}>
         <TextBox {...textBoxProps} />

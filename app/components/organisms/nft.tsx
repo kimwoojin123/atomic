@@ -1,15 +1,19 @@
 import React from 'react';
 import Section, { SectionProps } from '../atoms/section';
 import TextBox, { TextBoxProps } from '../molecules/textBox';
+import ButtonInLi from '../molecules/buttonInLi';
+import { UnorderedListProps } from '../atoms/ul';
 
 interface ContentsProps {
   sectionProps?: SectionProps;
-  textBoxProps?: TextBoxProps
+  textBoxProps?: TextBoxProps;
+  unorderedListProps?: UnorderedListProps;
 }
 
 const Nft: React.FC<ContentsProps> = ({
   sectionProps,
-  textBoxProps
+  textBoxProps,
+  unorderedListProps
 }) => {
   const defaultDivStyle = {
     width: '1250px',
@@ -42,9 +46,37 @@ const Nft: React.FC<ContentsProps> = ({
     pPropsArray: pPropsArray
   };
 
+  const items = [
+    {
+      imageUrl: 'https://www.perproject.io/assets/aien.jpg',
+      altText: 'alt_text_1',
+      textBoxProps: {
+        divProps: { style: { width: '300px', height: '150px', backgroundColor:'white' } },
+        hProps: { level: 3, children: 'Your Heading 1' },
+        pPropsArray: [{ children: 'Your paragraph 1' }]
+      },
+      imgWidth: 410,
+      imgHeight: 410
+    },
+    {
+      imageUrl: 'https://www.perproject.io/assets/perfriends.jpg',
+      altText: 'alt_text_2',
+      textBoxProps: {
+        divProps: { style: { width: '300px', height: '150px', backgroundColor:'white' } },
+        hProps: { level: 3, children: 'Your Heading 2' },
+        pPropsArray: [{ children: 'Your paragraph 2' }]
+      },
+      imgWidth: 410,
+      imgHeight: 410
+    },
+  ];
+
+  const ulStyle = { display: 'flex', backgroundColor:'white'};
+
   return (
-    <Section {...sectionProps}>
+    <Section {...sectionProps} style={{height:'754px'}}>
       <TextBox {...textBoxProps} {...customTextBoxProps} />
+      <ButtonInLi items={items} unorderedListProps={{ ...unorderedListProps, style: ulStyle}}/>
     </Section>
   );
 };
