@@ -1,11 +1,11 @@
 'use client'
 
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import ImageTextBox from '../molecules/imageTextBox';
 import Button from '../atoms/button';
 import { TextBoxProps } from './textBox';
-import UnorderedList, {UnorderedListProps} from '../atoms/ul';
-
+import UnorderedList, { UnorderedListProps } from '../atoms/ul';
+import Div from '../atoms/div';
 
 interface Item {
   imageUrl: string;
@@ -17,7 +17,7 @@ interface Item {
 
 interface ButtonInLiProps {
   items: Item[];
-  unorderedListProps : UnorderedListProps;
+  unorderedListProps: UnorderedListProps;
 }
 
 const ButtonInLi: React.FC<ButtonInLiProps> = ({ items, unorderedListProps }) => {
@@ -30,7 +30,13 @@ const ButtonInLi: React.FC<ButtonInLiProps> = ({ items, unorderedListProps }) =>
           key={index}
           onMouseOver={() => setActiveIndex(index)}
           onMouseOut={() => setActiveIndex(null)}
+          style={{
+            backgroundColor: activeIndex === index ? 'lightgray' : 'white',
+            width: '450px',
+            height: '600px',
+          }}
         >
+          
           <ImageTextBox
             imageUrl={item.imageUrl}
             altText={item.altText}
@@ -38,7 +44,22 @@ const ButtonInLi: React.FC<ButtonInLiProps> = ({ items, unorderedListProps }) =>
             imgHeight={item.imgHeight}
             textBoxProps={item.textBoxProps}
           />
-          {activeIndex === index && <Button>Show Details</Button>}
+          {activeIndex === index && (
+            <Div
+              width='400px'
+              height='50px'
+              style={{
+                position: 'relative',
+                bottom:'300px',
+                left:'225px',
+                transform: 'translate(-50%, -50%)',
+                backgroundColor: 'white',
+                padding: '10px',
+              }}
+            >
+              <Button>Show Details</Button>
+            </Div>
+          )}
         </li>
       ))}
     </UnorderedList>

@@ -4,6 +4,7 @@ import TextBox, { TextBoxProps } from '../molecules/textBox';
 import ButtonInLi from '../molecules/buttonInLi';
 import { UnorderedListProps } from '../atoms/ul';
 
+
 interface ContentsProps {
   sectionProps?: SectionProps;
   textBoxProps?: TextBoxProps;
@@ -34,7 +35,7 @@ const Nft: React.FC<ContentsProps> = ({
   };
 
   const pPropsArray = [
-    { children: "PER PROJECT에서 발행하는 NFT를 획득하고, 생태계에 참여해보세요.", style: defaultParagraphStyle },
+    { children: "PER PROJECT에서 발는 NFT를 획득하고, 생태계에 참여해보세요.", style: defaultParagraphStyle },
   ];
 
   const customTextBoxProps: TextBoxProps & { pCount?: number } = {
@@ -69,12 +70,23 @@ const Nft: React.FC<ContentsProps> = ({
       imgWidth: 410,
       imgHeight: 410
     },
+    {
+      imageUrl: 'https://www.perproject.io/assets/rubyon.jpg',
+      altText: 'alt_text_3',
+      textBoxProps: {
+        divProps: { style: { width: '300px', height: '150px', backgroundColor:'white' } },
+        hProps: { level: 3, children: 'Your Heading 2' },
+        pPropsArray: [{ children: 'Your paragraph 2' }]
+      },
+      imgWidth: 410,
+      imgHeight: 410
+    },
   ];
 
-  const ulStyle = { display: 'flex', backgroundColor:'white'};
+  const ulStyle = { display: 'flex', justifyContent:'center', gap:'30px'};
 
   return (
-    <Section {...sectionProps} style={{height:'754px'}}>
+    <Section {...sectionProps}>
       <TextBox {...textBoxProps} {...customTextBoxProps} />
       <ButtonInLi items={items} unorderedListProps={{ ...unorderedListProps, style: ulStyle}}/>
     </Section>

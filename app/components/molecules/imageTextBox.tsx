@@ -15,10 +15,8 @@ export interface ImageTextBoxProps {
 const ImageTextBox: React.FC<ImageTextBoxProps> = ({ imageUrl, altText, imgWidth, imgHeight, textBoxProps, divProps }) => {
   return (
     <Div {...divProps}>
-      <Div {...divProps}>
+      <Div {...divProps} style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
         <Image src={imageUrl} alt={altText} width={imgWidth} height={imgHeight} />
-      </Div>
-      <Div {...divProps}>
         <TextBox {...textBoxProps} />
       </Div>
     </Div>
