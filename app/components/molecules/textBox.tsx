@@ -3,23 +3,22 @@ import Div, { DivProps } from '../atoms/div';
 import H, { HeadingProps } from '../atoms/h';
 import P, { ParagraphProps } from '../atoms/p';
 
-interface TextBoxProps {
+export interface TextBoxProps {
   divProps?: DivProps;
   hProps?: HeadingProps;
-  pProps?: ParagraphProps;
   pCount?: number; 
+  pPropsArray?: ParagraphProps[];
 }
 
 const TextBox: React.FC<TextBoxProps> = ({
   divProps,
   hProps,
-  pProps,
-  pCount = 3
+  pCount = 3,
+  pPropsArray = []
 }) => {
-  const paragraphs = [];
-  for (let i = 0; i < pCount; i++) {
-    paragraphs.push(<P key={i} {...pProps}>Paragraph {i + 1}</P>);
-  }
+  const paragraphs = Array.from({ length: pCount }).map((_, index) => (
+    <P key={index} {...pPropsArray[index]}></P>
+  ));
 
   return (
     <Div {...divProps}>
