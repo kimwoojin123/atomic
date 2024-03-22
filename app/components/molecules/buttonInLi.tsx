@@ -1,30 +1,28 @@
-'use client'
+"use client";
 
-import React, { useState } from 'react';
-import ImageTextBox from '../molecules/imageTextBox';
-import Button from '../atoms/button';
-import { TextBoxProps } from './textBox';
-import UnorderedList, { UnorderedListProps } from '../atoms/ul';
-import styled from 'styled-components';
+import React, {useState} from "react";
+import ImageTextBox from "../molecules/imageTextBox";
+import Button, {ButtonProps} from "../atoms/button";
+import {TextBoxProps} from "./textBox";
+import UnorderedList, {UnorderedListProps} from "../atoms/ul";
+import styled from "styled-components";
 
+const Li = styled.li<{isActive: boolean}>`
+  background-color: ${(props: {isActive: boolean}) => (props.isActive ? "lightgray" : "white")};
+  width: 450px;
+  height: 600px;
+`;
 
-const Li = styled.li<{ isActive: boolean }>`
-    background-color: ${(props: { isActive: boolean }) => (props.isActive ? 'lightgray' : 'white')};
-    width: 450px;
-    height: 600px;
-    `;
-
-const StyledDiv = styled.div`
+const StyledButton = styled.button`
   width: 400px;
   height: 50px;
   position: relative;
   bottom: 300px;
   left: 225px;
   transform: translate(-50%, -50%);
-  background-color: white;
+  background-color: lightgray;
   padding: 10px;
 `;
-
 
 interface Item {
   imageUrl: string;
@@ -37,9 +35,10 @@ interface Item {
 interface ButtonInLiProps {
   items: Item[];
   unorderedListProps: UnorderedListProps;
+  buttonProps: ButtonProps;
 }
 
-const ButtonInLi: React.FC<ButtonInLiProps> = ({ items, unorderedListProps }) => {
+const ButtonInLi: React.FC<ButtonInLiProps> = ({items, unorderedListProps, buttonProps}) => {
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
 
   return (
@@ -58,11 +57,7 @@ const ButtonInLi: React.FC<ButtonInLiProps> = ({ items, unorderedListProps }) =>
             imgHeight={item.imgHeight}
             textBoxProps={item.textBoxProps}
           />
-          {activeIndex === index && (
-          <StyledDiv>
-            <Button>Show Details</Button>
-          </StyledDiv>
-          )}
+          {activeIndex === index && <StyledButton {...buttonProps}></StyledButton>}
         </Li>
       ))}
     </UnorderedList>
